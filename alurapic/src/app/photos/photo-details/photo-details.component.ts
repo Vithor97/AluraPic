@@ -14,6 +14,7 @@ import { UserService } from "../../core/user/user.service";
 export class PhotoDetailsComponent implements OnInit { 
 
     photo$: Observable<Photo>;
+    comments: number;
     photoId: number;
 
     constructor(
@@ -45,6 +46,15 @@ export class PhotoDetailsComponent implements OnInit {
                     console.log(err);
                     this.alertService.warning('Could not delete the photo!', true);
                 });
+    }
+    onMudouValor(evento){
+        //this.ngOnInit();
+        
+        this.photo$ = this.photoService.findById(this.photoId);
+        this.photo$.subscribe(photo => {
+            console.log('trueffff')
+            this.comments = photo.comments;
+        })
     }
 
     like(photo: Photo){

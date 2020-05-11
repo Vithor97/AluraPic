@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { Observable } from "rxjs";
 import { Input } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
@@ -17,6 +17,8 @@ export class PhotoCommentsComponent implements OnInit {
 
     @Input() photoId: number;
     commentForm: FormGroup;
+
+    @Output() mudouValor = new EventEmitter();
     
     comments$: Observable<PhotoComment[]>;
 
@@ -38,6 +40,7 @@ export class PhotoCommentsComponent implements OnInit {
             .addComment(this.photoId, comment)
             .pipe(switchMap(() => this.photoService.getComments(this.photoId)))
             .pipe(tap(() => {
+                this.mudouValor.emit({valor: true})
                 this.commentForm.reset();
             }));
     }
