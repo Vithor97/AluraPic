@@ -1,0 +1,10 @@
+#navbarr{
+    padding-bottom: 10px;
+    background-color: cornflowerblue;
+    transition: 0.6s;
+}
+
+.teste {
+    padding-bottom: 20px;
+    background-color: chartreuse;
+}
