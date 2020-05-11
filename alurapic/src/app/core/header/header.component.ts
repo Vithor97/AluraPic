@@ -51,8 +51,8 @@ export class HeaderComponent  implements OnInit {
     }
     fora(){
 
-        console.log('no metodo')
-        console.log(this.user$)
+        // console.log('no metodo')
+        // console.log(this.user$)
         if(this.user$ && window.pageYOffset > 0){
             document.getElementById("navbarr").style.top = "-50px";
         }
